@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="assets/js/libs/angular/angular.min.js" type="text/javascript"></script>
+        <script src="assets/js/libs/jquery/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="HomeCtrl">
+            <h1>Students</h1>
+            <div style="float:right;margin-right: 500px">
+                <p>
+                    <a href="javascript:void(0)" ng-click="showAddDialog()">Add Student</a>
+                </p>
+            </div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact No</th>
+                    <th>Status</th>
+                </tr>
+                <tr ng-repeat="s in students">
+                    <td>{{s.id}}</td>
+                    <td>{{s.firstName}} {{s.lastName}}</td>
+                    <td>{{s.email}}</td>
+                    <td>{{s.contactNo}}</td>
+                    <td>{{s.status}}</td>
+                </tr>
+            </table>
+            <div id="dialog" style="display: none">
+                <form>
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" ng-model="student.firstName"/>
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" ng-model="student.lastName"/>
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" ng-model="student.email"/>
+                    </div>
+                    <div>
+                        <label>Contact No</label>
+                        <input type="text" ng-model="student.contactNo"/>
+                    </div>
+                    <div>
+                        <label>Status</label>
+                        <label><input type="checkbox" ng-model="student.status"/>Active</label>
+                    </div>
+                    <button type="submit" ng-click="saveStudent()">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="assets/js/app.js" type="text/javascript"></script>
+    <script src="assets/js/services/student.service.js" type="text/javascript"></script>
+    <script src="assets/js/controller/HomeCtrl.js" type="text/javascript"></script>
+</html>
